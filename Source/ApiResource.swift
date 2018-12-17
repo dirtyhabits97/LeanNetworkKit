@@ -45,20 +45,10 @@ public extension ApiResource {
     }
     
     func makeModel(data: Data) -> Result<Model> {
-        if let model: Model = data.decode() {
+        if let model: Model = try? data.jsonDecode() {
             return .success(model)
         }
-        print("Failed to decode model")
-        print("Received: ", String(data: data, encoding: .utf8) ?? "unreadable")
         return .failure(ApiResourceError.failedToDecode)
-    }
-    
-}
-
-public extension ApiResource {
-    
-    var apiRequest: ApiRequest<Self> {
-        return ApiRequest(resource: self)
     }
     
 }
@@ -73,7 +63,7 @@ extension ApiResourceEncodable {
     
     var urlRequest: URLRequest {
         var urlRequest = URLRequest(url: url, httpMethod: httpMethod, headers: headers)
-        urlRequest.httpBody = try? JSONEncoder().encode(body)
+        urlRequest.httpBody = body.jsonEncoded
         return urlRequest
     }
     
