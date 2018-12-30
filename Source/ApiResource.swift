@@ -9,6 +9,7 @@
 import Foundation
 
 enum ApiResourceError: LocalizedError {
+    
     case failedToDecode
     
     var errorDescription: String? {
@@ -20,6 +21,7 @@ enum ApiResourceError: LocalizedError {
 }
 
 public protocol ApiResource {
+    
     associatedtype Model: Decodable
     
     typealias Headers = [String: String]
@@ -28,21 +30,14 @@ public protocol ApiResource {
     var httpMethod: String { get }
     
     var headers: Headers? { get }
+    
 }
 
-public extension ApiResource {
+extension ApiResource {
     
-    public var headers: Headers? {
-        return nil
-    }
-    
-    var url: URL {
-        return URL(string: urlString)!
-    }
-    
-    var urlRequest: URLRequest {
-        return URLRequest(url: url, httpMethod: httpMethod, headers: headers)
-    }
+    var headers: Headers? { return nil }
+    var url: URL { return URL(string: urlString)! }
+    var urlRequest: URLRequest { return URLRequest(url: url, httpMethod: httpMethod, headers: headers) }
     
     func makeModel(data: Data) -> Result<Model> {
         if let model: Model = try? data.jsonDecode() {
@@ -54,9 +49,10 @@ public extension ApiResource {
 }
 
 public protocol ApiResourceEncodable: ApiResource {
-    associatedtype Body: Encodable
     
+    associatedtype Body: Encodable
     var body: Body { get }
+    
 }
 
 extension ApiResourceEncodable {

@@ -9,23 +9,36 @@
 import Foundation
 
 enum NetworkRequestError: LocalizedError {
+    
     case client
     case server
     case emptyData
+    
+    var errorDescription: String? {
+        switch self {
+        case .client: return "Client side error"
+        case .server: return "Server side error"
+        case .emptyData: return "Received empty data"
+        }
+    }
+    
 }
 
 protocol NetworkRequest {
+    
     associatedtype Model
     
     func load(_ urlRequest: URLRequest, withCompletion completion: @escaping (Result<Model>) -> Void)
     func decode(_ data: Data) -> Result<Model>
+    
 }
 
 extension NetworkRequest {
+    
     func load(_ urlRequest: URLRequest, withCompletion completion: @escaping (Result<Model>) -> Void) {
         let configuration = URLSessionConfiguration.ephemeral
-        let urlSesson = URLSession(configuration: configuration)
-        urlSesson.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+        let urlSession = URLSession(configuration: configuration)
+        urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
                 DispatchQueue.main.async { completion(.failure(e)) }

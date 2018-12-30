@@ -15,15 +15,16 @@ public final class ApiRequest<Resource: ApiResource> {
     public init(resource: Resource) {
         self.resource = resource
     }
+    
 }
 
 extension ApiRequest: NetworkRequest {
     
-    public func load(withCompletion completion: @escaping (Result<Resource.Model>) -> Void) {
+    public func load(then completion: @escaping (Result<Resource.Model>) -> Void) {
         load(resource.urlRequest, withCompletion: completion)
     }
     
-    internal func decode(_ data: Data) -> Result<Resource.Model> {
+    func decode(_ data: Data) -> Result<Resource.Model> {
         return resource.makeModel(data: data)
     }
     

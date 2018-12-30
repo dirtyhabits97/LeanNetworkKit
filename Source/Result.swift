@@ -9,6 +9,7 @@
 import Foundation
 
 public enum Result<T> {
+    
     case success(T)
     case failure(Error)
     
@@ -25,4 +26,5 @@ public enum Result<T> {
         case .failure(let e): return e
         }
     }
+    
 }
