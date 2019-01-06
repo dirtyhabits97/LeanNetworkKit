@@ -35,7 +35,7 @@ public protocol ApiResource {
 
 extension ApiResource {
     
-    var headers: Headers? { return nil }
+    public var headers: Headers? { return nil }
     var url: URL { return URL(string: urlString)! }
     var urlRequest: URLRequest { return URLRequest(url: url, httpMethod: httpMethod, headers: headers) }
     
