@@ -10,7 +10,7 @@ import Foundation
 
 extension Data {
     
-    func jsonDecode<T: Decodable>() throws -> T {
+    func jsonDecoded<T: Decodable>() throws -> T {
         return try JSONDecoder().decode(T.self, from: self)
     }
     
@@ -18,11 +18,7 @@ extension Data {
 
 extension Encodable {
     
-    var jsonEncoded: Data? {
-        return try? jsonEncode()
-    }
-    
-    func jsonEncode() throws -> Data {
+    func jsonEncoded() throws -> Data {
         return try JSONEncoder().encode(self)
     }
     

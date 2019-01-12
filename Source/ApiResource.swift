@@ -24,23 +24,41 @@ public protocol ApiResource {
     
     associatedtype Model: Decodable
     
-    typealias Headers = [String: String]
-    
-    var urlString: String { get }
-    var httpMethod: String { get }
-    
-    var headers: Headers? { get }
+    var baseUrl: URL { get }
+    var path: String { get }
+    var method: HTTPMethod { get }
+    var headers: HTTPHeaders? { get }
+    var queryItems: [URLQueryItem]? { get }
     
 }
 
 extension ApiResource {
     
-    public var headers: Headers? { return nil }
-    var url: URL { return URL(string: urlString)! }
-    var urlRequest: URLRequest { return URLRequest(url: url, httpMethod: httpMethod, headers: headers) }
+    public var method: HTTPMethod { return .GET }
+    public var headers: HTTPHeaders? { return nil }
+    public var queryItems: [URLQueryItem]? { return nil }
     
-    func makeModel(data: Data) -> Result<Model> {
-        if let model: Model = try? data.jsonDecode() {
+}
+
+extension ApiResource {
+    
+    var url: URL {
+        let raw = baseUrl.absoluteString + path
+        var components = URLComponents(string: raw)!
+        components.queryItems = queryItems
+        return components.url!
+    }
+    
+    var urlRequest: URLRequest {
+        return .init(url: url, method: method, headers: headers ?? [:])
+    }
+    
+}
+
+extension ApiResource {
+    
+    func model(from data: Data) -> Result<Model> {
+        if let model: Model = try? data.jsonDecoded() {
             return .success(model)
         }
         return .failure(ApiResourceError.failedToDecode)
@@ -51,6 +69,7 @@ extension ApiResource {
 public protocol ApiResourceEncodable: ApiResource {
     
     associatedtype Body: Encodable
+    
     var body: Body { get }
     
 }
@@ -58,9 +77,9 @@ public protocol ApiResourceEncodable: ApiResource {
 extension ApiResourceEncodable {
     
     var urlRequest: URLRequest {
-        var urlRequest = URLRequest(url: url, httpMethod: httpMethod, headers: headers)
-        urlRequest.httpBody = body.jsonEncoded
-        return urlRequest
+        var request = URLRequest(url: url, method: method, headers: headers ?? [:])
+        request.httpBody = try? body.jsonEncoded()
+        return request
     }
     
 }

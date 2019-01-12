@@ -8,14 +8,24 @@
 
 import Foundation
 
+public typealias HTTPHeaders = [String: String]
+
+public enum HTTPMethod: String {
+    
+    case GET
+    case POST
+    case PUT
+    case PATCH
+    case DELETE
+    
+}
+
 extension URLRequest {
     
-    typealias Headers = [String: String]
-    
-    init(url: URL, httpMethod: String, headers: Headers?) {
+    init(url: URL, method: HTTPMethod, headers: HTTPHeaders) {
         self.init(url: url)
-        self.httpMethod = httpMethod
-        for header in headers ?? [:] {
+        httpMethod = method.rawValue
+        for header in headers {
             setValue(header.key, forHTTPHeaderField: header.value)
         }
     }

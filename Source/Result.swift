@@ -8,12 +8,16 @@
 
 import Foundation
 
-public enum Result<T> {
+public enum Result<Value> {
     
-    case success(T)
+    case success(Value)
     case failure(Error)
     
-    public var value: T? {
+}
+
+extension Result {
+    
+    public var value: Value? {
         switch self {
         case .success(let v): return v
         case .failure: return nil
@@ -24,6 +28,17 @@ public enum Result<T> {
         switch self {
         case .success: return nil
         case .failure(let e): return e
+        }
+    }
+    
+}
+
+extension Result {
+    
+    public func resolve() throws -> Value {
+        switch self {
+        case .success(let v): return v
+        case .failure(let e): throw e
         }
     }
     

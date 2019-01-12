@@ -28,43 +28,44 @@ protocol NetworkRequest {
     
     associatedtype Model
     
-    func load(_ urlRequest: URLRequest, withCompletion completion: @escaping (Result<Model>) -> Void)
+    var urlSession: URLSession? { get }
+    
+    func load(urlRequest: URLRequest, completion: @escaping (Result<Model>) -> Void)
     func decode(_ data: Data) -> Result<Model>
     
 }
 
 extension NetworkRequest {
     
-    func load(_ urlRequest: URLRequest, withCompletion completion: @escaping (Result<Model>) -> Void) {
-        let configuration = URLSessionConfiguration.ephemeral
-        let urlSession = URLSession(configuration: configuration)
+    func load(urlRequest: URLRequest, completion: @escaping (Result<Model>) -> Void) {
+        let urlSession = self.urlSession ?? URLSession(configuration: .ephemeral)
         urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
-                DispatchQueue.main.async { completion(.failure(e)) }
+                completion(.failure(e))
                 return
             }
             
             if let status = (response as? HTTPURLResponse)?.statusCode {
                 if (status/100) == 4 {
                     print("Client side error ", status)
-                    DispatchQueue.main.async { completion(.failure(NetworkRequestError.client)) }
+                    completion(.failure(NetworkRequestError.client))
                     return
                 } else if (status/100) == 5 {
                     print("Server side error ", status)
-                    DispatchQueue.main.async { completion(.failure(NetworkRequestError.server)) }
+                    completion(.failure(NetworkRequestError.server))
                     return
                 }
             }
             
             guard let d = data else {
                 print("Network Request Error. Didn't receive data")
-                DispatchQueue.main.async { completion(.failure(NetworkRequestError.emptyData)) }
+                completion(.failure(NetworkRequestError.emptyData))
                 return
             }
             
             print("Network Request Success")
-            DispatchQueue.main.async { completion(self.decode(d)) }
+            completion(self.decode(d))
         }).resume()
     }
     
