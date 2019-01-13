@@ -71,8 +71,8 @@
 		EA2EE7FB2184EF1600ED4BD0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D62E9BCD21EBF5C3005C5ADB /* Future.swift */,
 				EA2EE8002184EF6600ED4BD0 /* Result.swift */,
+				D62E9BCD21EBF5C3005C5ADB /* Future.swift */,
 				EA2EE7FC2184EF4900ED4BD0 /* ApiRequest.swift */,
 				EA2EE8022184EFC600ED4BD0 /* ApiResource.swift */,
 				EA2EE8042184EFDD00ED4BD0 /* NetworkRequest.swift */,

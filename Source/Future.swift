@@ -18,16 +18,28 @@ public struct Future<Value> {
     
     // MARK: - Observer methods
     
-    public mutating func onResult(_ completion: @escaping (Result<Value>) -> Void) {
-        onResult = completion
+    public mutating func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) {
+        if let queue = queue {
+            onResult = { result in queue.async { completion(result) } }
+        } else {
+            onResult = completion
+        }
     }
     
-    public mutating func onSuccess(_ completion: @escaping (Value) -> Void) {
-        onSuccess = completion
+    public mutating func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) {
+        if let queue = queue {
+            onSuccess = { value in queue.async { completion(value) } }
+        } else {
+            onSuccess = completion
+        }
     }
     
-    public mutating func onFailure(_ completion: @escaping (Error) -> Void) {
-        onFailure = completion
+    public mutating func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) {
+        if let queue = queue {
+            onFailure = { error in queue.async { completion(error) } }
+        } else {
+            onFailure = completion
+        }
     }
     
     func notify(with result: Result<Value>) {
