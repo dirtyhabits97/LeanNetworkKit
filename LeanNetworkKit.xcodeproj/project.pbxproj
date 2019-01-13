@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62E9BCE21EBF5C3005C5ADB /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62E9BCD21EBF5C3005C5ADB /* Future.swift */; };
 		EA2EE7F52184EF0F00ED4BD0 /* LeanNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2EE7F32184EF0F00ED4BD0 /* LeanNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA2EE7FD2184EF4900ED4BD0 /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2EE7FC2184EF4900ED4BD0 /* ApiRequest.swift */; };
 		EA2EE8012184EF6600ED4BD0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2EE8002184EF6600ED4BD0 /* Result.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D62E9BCD21EBF5C3005C5ADB /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		EA2EE7F02184EF0F00ED4BD0 /* LeanNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LeanNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2EE7F32184EF0F00ED4BD0 /* LeanNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeanNetworkKit.h; sourceTree = "<group>"; };
 		EA2EE7F42184EF0F00ED4BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		EA2EE7FB2184EF1600ED4BD0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D62E9BCD21EBF5C3005C5ADB /* Future.swift */,
 				EA2EE8002184EF6600ED4BD0 /* Result.swift */,
 				EA2EE7FC2184EF4900ED4BD0 /* ApiRequest.swift */,
 				EA2EE8022184EFC600ED4BD0 /* ApiResource.swift */,
@@ -166,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA2EE8012184EF6600ED4BD0 /* Result.swift in Sources */,
+				D62E9BCE21EBF5C3005C5ADB /* Future.swift in Sources */,
 				EA2EE7FD2184EF4900ED4BD0 /* ApiRequest.swift in Sources */,
 				EA2EE8052184EFDD00ED4BD0 /* NetworkRequest.swift in Sources */,
 				EA2EE80A2184F04F00ED4BD0 /* Data+Extensions.swift in Sources */,

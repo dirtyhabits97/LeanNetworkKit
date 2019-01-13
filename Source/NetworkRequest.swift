@@ -30,43 +30,45 @@ protocol NetworkRequest {
     
     var urlSession: URLSession? { get }
     
-    func load(urlRequest: URLRequest, completion: @escaping (Result<Model>) -> Void)
+    func load(urlRequest: URLRequest) -> Future<Model>
     func decode(_ data: Data) -> Result<Model>
     
 }
 
 extension NetworkRequest {
     
-    func load(urlRequest: URLRequest, completion: @escaping (Result<Model>) -> Void) {
+    func load(urlRequest: URLRequest) -> Future<Model> {
         let urlSession = self.urlSession ?? URLSession(configuration: .ephemeral)
+        let future = Future<Model>()
         urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
-                completion(.failure(e))
+                future.notify(with: .failure(e))
                 return
             }
             
             if let status = (response as? HTTPURLResponse)?.statusCode {
                 if (status/100) == 4 {
                     print("Client side error ", status)
-                    completion(.failure(NetworkRequestError.client))
+                    future.notify(with: .failure(NetworkRequestError.client))
                     return
                 } else if (status/100) == 5 {
                     print("Server side error ", status)
-                    completion(.failure(NetworkRequestError.server))
+                    future.notify(with: .failure(NetworkRequestError.server))
                     return
                 }
             }
             
             guard let d = data else {
                 print("Network Request Error. Didn't receive data")
-                completion(.failure(NetworkRequestError.emptyData))
+                future.notify(with: .failure(NetworkRequestError.emptyData))
                 return
             }
             
             print("Network Request Success")
-            completion(self.decode(d))
+            future.notify(with: self.decode(d))
         }).resume()
+        return future
     }
     
 }
