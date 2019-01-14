@@ -59,8 +59,6 @@ extension ApiResource {
 extension ApiResource {
     
     func model(from data: Data) -> Result<Model> {
-        print("Model is of type: \(Model.self)")
-        print("Passes condition: \(Model.self == Data.self)")
         if Model.self == Data.self {
             return .success(data as! Model)
         } else if let model: Model = try? data.jsonDecoded() {
