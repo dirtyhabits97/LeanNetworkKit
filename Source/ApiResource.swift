@@ -56,22 +56,13 @@ extension ApiResource {
     
 }
 
-extension ApiResource where Model == Data {
-    
-    func model(from data: Data) -> Result<Model> {
-        print("Model is data")
-        print("Data: \(data)")
-        return .success(data)
-    }
-    
-}
-
 extension ApiResource {
     
     func model(from data: Data) -> Result<Model> {
-        print("Model is not Data")
-        print(type(of: Model.self))
-        if let model: Model = try? data.jsonDecoded() {
+        print("Model is of type: \(Model.self)")
+        if type(of: Model.self) == Data.self {
+            return .success(data as! Model)
+        } else if let model: Model = try? data.jsonDecoded() {
             return .success(model)
         }
         return .failure(ApiResourceError.failedToDecode)
