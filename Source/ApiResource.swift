@@ -56,6 +56,16 @@ extension ApiResource {
     
 }
 
+extension ApiResource where Model == Data {
+    
+    func model(from data: Data) -> Result<Model> {
+        print("Model is data")
+        print("Data: \(data)")
+        return .success(data)
+    }
+    
+}
+
 extension ApiResource {
     
     func model(from data: Data) -> Result<Model> {
@@ -65,16 +75,6 @@ extension ApiResource {
             return .success(model)
         }
         return .failure(ApiResourceError.failedToDecode)
-    }
-    
-}
-
-extension ApiResource where Model == Data {
-    
-    func model(from data: Data) -> Result<Model> {
-        print("Model is data")
-        print("Data: \(data)")
-        return .success(data)
     }
     
 }
