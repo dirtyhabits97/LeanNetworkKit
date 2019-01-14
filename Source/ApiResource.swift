@@ -37,6 +37,7 @@ extension ApiResource {
     public var method: HTTPMethod { return .GET }
     public var headers: HTTPHeaders? { return nil }
     public var queryItems: [URLQueryItem]? { return nil }
+    public var absoluteUrlString: String { return url.absoluteString }
     
 }
 
