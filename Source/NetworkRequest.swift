@@ -39,34 +39,34 @@ extension NetworkRequest {
     
     func load(urlRequest: URLRequest) -> Future<Model> {
         let urlSession = self.urlSession ?? URLSession(configuration: .ephemeral)
-        let future = Future<Model>()
+        var future = Future<Model>()
         urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
-                future.notify(with: .failure(e))
+                future.result = .failure(e)
                 return
             }
             
             if let status = (response as? HTTPURLResponse)?.statusCode {
                 if (status/100) == 4 {
                     print("Client side error ", status)
-                    future.notify(with: .failure(NetworkRequestError.client))
+                    future.result = .failure(NetworkRequestError.client)
                     return
                 } else if (status/100) == 5 {
                     print("Server side error ", status)
-                    future.notify(with: .failure(NetworkRequestError.server))
+                    future.result = .failure(NetworkRequestError.server)
                     return
                 }
             }
             
             guard let d = data else {
                 print("Network Request Error. Didn't receive data")
-                future.notify(with: .failure(NetworkRequestError.emptyData))
+                future.result = .failure(NetworkRequestError.emptyData)
                 return
             }
             
             print("Network Request Success")
-            future.notify(with: self.decode(d))
+            future.result = self.decode(d)
         }).resume()
         return future
     }

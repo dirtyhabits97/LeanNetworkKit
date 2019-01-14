@@ -12,6 +12,10 @@ public struct Future<Value> {
     
     // MARK: - Properties
     
+    var result: Result<Value>? {
+        didSet { result.map(notify(with:)) }
+    }
+    
     private var onResult: ((Result<Value>) -> Void)?
     private var onSuccess: ((Value) -> Void)?
     private var onFailure: ((Error) -> Void)?
@@ -24,6 +28,7 @@ public struct Future<Value> {
         } else {
             onResult = completion
         }
+        if let result = self.result { onResult?(result)  }
     }
     
     public mutating func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) {
@@ -32,6 +37,7 @@ public struct Future<Value> {
         } else {
             onSuccess = completion
         }
+        if let value = self.result?.value { onSuccess?(value)  }
     }
     
     public mutating func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) {
@@ -40,9 +46,10 @@ public struct Future<Value> {
         } else {
             onFailure = completion
         }
+        if let error = self.result?.error { onFailure?(error)  }
     }
     
-    func notify(with result: Result<Value>) {
+    private func notify(with result: Result<Value>) {
         onResult?(result)
         do {
             onSuccess?(try result.resolve())
