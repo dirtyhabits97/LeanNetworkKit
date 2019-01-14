@@ -67,6 +67,14 @@ extension ApiResource {
     
 }
 
+extension ApiResource where Model == Data {
+    
+    func model(from data: Data) -> Result<Model> {
+        return .success(data)
+    }
+    
+}
+
 public protocol ApiResourceEncodable: ApiResource {
     
     associatedtype Body: Encodable
