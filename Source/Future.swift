@@ -22,31 +22,37 @@ public final class Future<Value> {
     
     // MARK: - Observer methods
     
-    public func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) {
+    @discardableResult
+    public func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) -> Future<Value> {
         if let queue = queue {
             onResult = { result in queue.async { completion(result) } }
         } else {
             onResult = completion
         }
         if let result = self.result { onResult?(result)  }
+        return self
     }
     
-    public func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) {
+    @discardableResult
+    public func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) -> Future<Value> {
         if let queue = queue {
             onSuccess = { value in queue.async { completion(value) } }
         } else {
             onSuccess = completion
         }
         if let value = self.result?.value { onSuccess?(value)  }
+        return self
     }
     
-    public func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) {
+    @discardableResult
+    public func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) -> Future<Value> {
         if let queue = queue {
             onFailure = { error in queue.async { completion(error) } }
         } else {
             onFailure = completion
         }
         if let error = self.result?.error { onFailure?(error)  }
+        return self
     }
     
     private func notify(with result: Result<Value>) {

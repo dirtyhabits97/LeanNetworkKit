@@ -39,7 +39,7 @@ extension NetworkRequest {
     
     func load(urlRequest: URLRequest) -> Future<Model> {
         let urlSession = self.urlSession ?? URLSession(configuration: .ephemeral)
-        var future = Future<Model>()
+        let future = Future<Model>()
         urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
