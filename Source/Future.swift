@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Future<Value> {
+public final class Future<Value> {
     
     // MARK: - Properties
     
@@ -22,7 +22,7 @@ public struct Future<Value> {
     
     // MARK: - Observer methods
     
-    public mutating func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) {
+    public func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) {
         if let queue = queue {
             onResult = { result in queue.async { completion(result) } }
         } else {
@@ -31,7 +31,7 @@ public struct Future<Value> {
         if let result = self.result { onResult?(result)  }
     }
     
-    public mutating func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) {
+    public func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) {
         if let queue = queue {
             onSuccess = { value in queue.async { completion(value) } }
         } else {
@@ -40,7 +40,7 @@ public struct Future<Value> {
         if let value = self.result?.value { onSuccess?(value)  }
     }
     
-    public mutating func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) {
+    public func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) {
         if let queue = queue {
             onFailure = { error in queue.async { completion(error) } }
         } else {
