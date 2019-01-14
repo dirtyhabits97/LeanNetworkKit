@@ -59,6 +59,8 @@ extension ApiResource {
 extension ApiResource {
     
     func model(from data: Data) -> Result<Model> {
+        print("Model is not Data")
+        print(type(of: Model.self))
         if let model: Model = try? data.jsonDecoded() {
             return .success(model)
         }
