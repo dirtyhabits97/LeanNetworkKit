@@ -16,49 +16,32 @@ public final class Future<Value> {
         didSet { result.map(notify(with:)) }
     }
     
-    private var onResult: ((Result<Value>) -> Void)?
-    private var onSuccess: ((Value) -> Void)?
+    private var onSuccess: ((Value) throws -> Void)?
     private var onFailure: ((Error) -> Void)?
     
     // MARK: - Observer methods
     
     @discardableResult
-    public func onResult(queue: DispatchQueue? = nil,  _ completion: @escaping (Result<Value>) -> Void) -> Future<Value> {
-        if let queue = queue {
-            onResult = { result in queue.async { completion(result) } }
-        } else {
-            onResult = completion
+    public func onSuccess(_ completion: @escaping (Value) throws -> Void) -> Future<Value> {
+        onSuccess = completion
+        do {
+            try result?.value.map(completion)
+        } catch let error {
+            onFailure?(error)
         }
-        if let result = self.result { onResult?(result)  }
         return self
     }
     
     @discardableResult
-    public func onSuccess(queue: DispatchQueue? = nil, _ completion: @escaping (Value) -> Void) -> Future<Value> {
-        if let queue = queue {
-            onSuccess = { value in queue.async { completion(value) } }
-        } else {
-            onSuccess = completion
-        }
-        if let value = self.result?.value { onSuccess?(value)  }
-        return self
-    }
-    
-    @discardableResult
-    public func onFailure(queue: DispatchQueue? = nil, _ completion: @escaping (Error) -> Void) -> Future<Value> {
-        if let queue = queue {
-            onFailure = { error in queue.async { completion(error) } }
-        } else {
-            onFailure = completion
-        }
-        if let error = self.result?.error { onFailure?(error)  }
+    public func onFailure(_ completion: @escaping (Error) -> Void) -> Future<Value> {
+        onFailure = completion
+        result?.error.map(completion)
         return self
     }
     
     private func notify(with result: Result<Value>) {
-        onResult?(result)
         do {
-            onSuccess?(try result.resolve())
+            try onSuccess?(try result.resolve())
         } catch let error {
             onFailure?(error)
         }
