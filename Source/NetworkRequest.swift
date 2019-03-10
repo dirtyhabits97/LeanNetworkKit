@@ -8,21 +8,25 @@
 
 import Foundation
 
+// MARK: - Error
+
 enum NetworkRequestError: LocalizedError {
     
-    case client
-    case server
+    case client(code: Int)
+    case server(code: Int)
     case emptyData
     
     var errorDescription: String? {
         switch self {
-        case .client: return "Client side error"
-        case .server: return "Server side error"
+        case .client(let code): return "Client side error: \(code)"
+        case .server(let code): return "Server side error: \(code)"
         case .emptyData: return "Received empty data"
         }
     }
     
 }
+
+// MARK: - NetworkRequest
 
 protocol NetworkRequest {
     
@@ -30,45 +34,58 @@ protocol NetworkRequest {
     
     var urlSession: URLSession? { get }
     
-    func load(urlRequest: URLRequest) -> Future<Model>
+    func load(_ completion: @escaping (Result<Model>) -> Void)
     func decode(_ data: Data) -> Result<Model>
     
 }
 
 extension NetworkRequest {
     
-    func load(urlRequest: URLRequest) -> Future<Model> {
-        let urlSession = self.urlSession ?? URLSession(configuration: .ephemeral)
-        let future = Future<Model>()
-        urlSession.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+    func loadModel(urlRequest: URLRequest, then completion: @escaping (Result<Model>) -> Void) {
+        let session = (urlSession ?? URLSession(configuration: .ephemeral))
+        session.load(urlRequest: urlRequest) { (result) in
+            switch result {
+            case .failure(let error): completion(.failure(error))
+            case .success(let data): completion(self.decode(data))
+            }
+        }
+    }
+    
+}
+
+// MARK: - Helper method
+
+private extension URLSession {
+    
+    func load(urlRequest: URLRequest, _ completion: @escaping (Result<Data>) -> Void) {
+        dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
-                future.result = .failure(e)
+                completion(.failure(e))
                 return
             }
             
-            if let status = (response as? HTTPURLResponse)?.statusCode {
-                if (status/100) == 4 {
-                    print("Client side error ", status)
-                    future.result = .failure(NetworkRequestError.client)
+            if let code = (response as? HTTPURLResponse)?.statusCode {
+                if (code/100) == 4 {
+                    print("Network Request Error. Client side error: \(code)")
+                    completion(.failure(NetworkRequestError.client(code: code)))
                     return
-                } else if (status/100) == 5 {
-                    print("Server side error ", status)
-                    future.result = .failure(NetworkRequestError.server)
+                } else if (code/100) == 5 {
+                    print("Network Request Error. Server side error: \(code)")
+                    completion(.failure(NetworkRequestError.server(code: code)))
                     return
                 }
             }
             
-            guard let d = data else {
+            guard let data = data else {
                 print("Network Request Error. Didn't receive data")
-                future.result = .failure(NetworkRequestError.emptyData)
+                completion(.failure(NetworkRequestError.emptyData))
                 return
             }
             
             print("Network Request Success")
-            future.result = self.decode(d)
+            completion(.success(data))
         }).resume()
-        return future
     }
     
 }

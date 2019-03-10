@@ -12,7 +12,7 @@ public final class ApiRequest<Resource: ApiResource> {
     
     // MARK: - Properties
     
-    let resource: Resource
+    private let resource: Resource
     let urlSession: URLSession?
     
     // MARK: - Initializer
@@ -26,8 +26,8 @@ public final class ApiRequest<Resource: ApiResource> {
 
 extension ApiRequest: NetworkRequest {
     
-    public func load() -> Future<Resource.Model> {
-        return load(urlRequest: resource.urlRequest)
+    public func load(_ completion: @escaping (Result<Resource.Model>) -> Void) {
+        return loadModel(urlRequest: resource.urlRequest, then: completion)
     }
     
     func decode(_ data: Data) -> Result<Resource.Model> {

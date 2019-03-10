@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Error
+
 enum ApiResourceError: LocalizedError {
     
     case failedToDecode
@@ -20,6 +22,8 @@ enum ApiResourceError: LocalizedError {
     
 }
 
+// MARK: - ApiResource Base
+
 public protocol ApiResource {
     
     associatedtype Model: Decodable
@@ -30,14 +34,25 @@ public protocol ApiResource {
     var headers: HTTPHeaders? { get }
     var queryItems: [URLQueryItem]? { get }
     
+    func model(from data: Data) -> Result<Model>
+    
 }
 
-extension ApiResource {
+public extension ApiResource {
     
-    public var method: HTTPMethod { return .GET }
-    public var headers: HTTPHeaders? { return nil }
-    public var queryItems: [URLQueryItem]? { return nil }
-    public var absoluteUrlString: String { return url.absoluteString }
+    var method: HTTPMethod { return .GET }
+    var headers: HTTPHeaders? { return nil }
+    var queryItems: [URLQueryItem]? { return nil }
+    var absoluteUrlString: String { return url.absoluteString }
+    
+    func model(from data: Data) -> Result<Model> {
+        if Model.self == Data.self {
+            return .success(data as! Model)
+        } else if let model: Model = try? data.jsonDecoded() {
+            return .success(model)
+        }
+        return .failure(ApiResourceError.failedToDecode)
+    }
     
 }
 
@@ -56,23 +71,11 @@ extension ApiResource {
     
 }
 
-extension ApiResource {
-    
-    func model(from data: Data) -> Result<Model> {
-        if Model.self == Data.self {
-            return .success(data as! Model)
-        } else if let model: Model = try? data.jsonDecoded() {
-            return .success(model)
-        }
-        return .failure(ApiResourceError.failedToDecode)
-    }
-    
-}
+// MARK: - ApiResource Encodable
 
 public protocol ApiResourceEncodable: ApiResource {
     
     associatedtype Body: Encodable
-    
     var body: Body { get }
     
 }

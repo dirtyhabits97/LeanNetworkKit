@@ -15,27 +15,23 @@ public enum Result<Value> {
     
 }
 
-extension Result {
+public extension Result {
     
-    public var value: Value? {
+    var value: Value? {
         switch self {
         case .success(let v): return v
         case .failure: return nil
         }
     }
     
-    public var error: Error? {
+    var error: Error? {
         switch self {
         case .success: return nil
         case .failure(let e): return e
         }
     }
     
-}
-
-extension Result {
-    
-    public func resolve() throws -> Value {
+    func resolve() throws -> Value {
         switch self {
         case .success(let v): return v
         case .failure(let e): throw e
