@@ -34,7 +34,7 @@ public protocol ApiResource {
     var headers: HTTPHeaders? { get }
     var queryItems: [URLQueryItem]? { get }
     
-    func model(from data: Data) -> Result<Model>
+    func model(from data: Data) -> Result<Model, Error>
     
 }
 
@@ -45,7 +45,7 @@ public extension ApiResource {
     var queryItems: [URLQueryItem]? { return nil }
     var absoluteUrlString: String { return url.absoluteString }
     
-    func model(from data: Data) -> Result<Model> {
+    func model(from data: Data) -> Result<Model, Error> {
         if Model.self == Data.self {
             return .success(data as! Model)
         } else if let model: Model = try? data.jsonDecoded() {

@@ -26,11 +26,11 @@ public final class ApiRequest<Resource: ApiResource> {
 
 extension ApiRequest: NetworkRequest {
     
-    public func load(_ completion: @escaping (Result<Resource.Model>) -> Void) {
+    public func load(_ completion: @escaping (Result<Resource.Model, Error>) -> Void) {
         return loadModel(urlRequest: resource.urlRequest, then: completion)
     }
     
-    func decode(_ data: Data) -> Result<Resource.Model> {
+    func decode(_ data: Data) -> Result<Resource.Model, Error> {
         return resource.model(from: data)
     }
     

@@ -34,14 +34,14 @@ protocol NetworkRequest {
     
     var urlSession: URLSession? { get }
     
-    func load(_ completion: @escaping (Result<Model>) -> Void)
-    func decode(_ data: Data) -> Result<Model>
+    func load(_ completion: @escaping (Result<Model, Error>) -> Void)
+    func decode(_ data: Data) -> Result<Model, Error>
     
 }
 
 extension NetworkRequest {
     
-    func loadModel(urlRequest: URLRequest, then completion: @escaping (Result<Model>) -> Void) {
+    func loadModel(urlRequest: URLRequest, then completion: @escaping (Result<Model, Error>) -> Void) {
         let session = (urlSession ?? URLSession(configuration: .ephemeral))
         session.load(urlRequest: urlRequest) { (result) in
             switch result {
@@ -57,7 +57,7 @@ extension NetworkRequest {
 
 private extension URLSession {
     
-    func load(urlRequest: URLRequest, _ completion: @escaping (Result<Data>) -> Void) {
+    func load(urlRequest: URLRequest, _ completion: @escaping (Result<Data, Error>) -> Void) {
         dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             if let e = error {
                 print("Network Request Error. \(e)")
