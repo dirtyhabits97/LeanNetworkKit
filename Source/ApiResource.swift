@@ -80,6 +80,12 @@ public protocol ApiResourceEncodable: ApiResource {
     
 }
 
+public extension ApiResourceEncodable {
+    
+    var method: HTTPMethod { return .POST }
+    
+}
+
 extension ApiResourceEncodable {
     
     var urlRequest: URLRequest {
