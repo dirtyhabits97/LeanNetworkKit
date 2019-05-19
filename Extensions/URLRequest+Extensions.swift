@@ -8,25 +8,28 @@
 
 import Foundation
 
-public typealias HTTPHeaders = [String: String]
-
-public enum HTTPMethod: String {
-    
-    case GET
-    case POST
-    case PUT
-    case PATCH
-    case DELETE
-    
-}
-
 extension URLRequest {
     
-    init(url: URL, method: HTTPMethod, headers: HTTPHeaders) {
-        self.init(url: url)
-        httpMethod = method.rawValue
-        for header in headers {
-            setValue(header.key, forHTTPHeaderField: header.value)
+    init<AnyRequest: Request>(
+        request: AnyRequest
+    ) throws {
+        self.init(url: try URL(request: request))
+        httpMethod = request.method.rawValue
+        set(headers: request.headers ?? [:])
+    }
+    
+    init<AnyEncodableRequest: EncodableRequest>(
+        encodableRequest request: AnyEncodableRequest
+    ) throws {
+        self.init(url: try URL(request: request))
+        httpMethod = request.method.rawValue
+        httpBody = try request.encode(request.body)
+        set(headers: request.headers ?? [:])
+    }
+    
+    private mutating func set(headers: HTTPHeaders) {
+        for (header, value) in headers {
+            setValue(value, forHTTPHeaderField: header)
         }
     }
     

@@ -1,0 +1,61 @@
+//
+//  NetworkRequestManager.swift
+//  LeanNetworkKit
+//
+//  Created by Gonzalo Reyes Huertas on 5/18/19.
+//  Copyright © 2019 Gonzalo Reyes Huertas. All rights reserved.
+//
+
+import Foundation
+
+public protocol NetworkRequestManager: AnyObject {
+    
+    var urlSession: URLSession! { get }
+    var queue: OperationQueue { get }
+    
+    func load<AnyRequest: Request>(
+        _ request: AnyRequest,
+        _ completion: (Result<AnyRequest.Response, Error>) -> Void
+    )
+    func load<AnyEncodableRequest: EncodableRequest>(
+        _ request: AnyEncodableRequest,
+        _ completion: (Result<AnyEncodableRequest.Response, Error>) -> Void
+    )
+    
+}
+
+public extension NetworkRequestManager {
+    
+    func load<AnyRequest: Request>(
+        _ request: AnyRequest,
+        _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
+    ) {
+        queue.addOperation(operation(for: request, completion))
+    }
+    
+    func load<AnyEncodableRequest: EncodableRequest>(
+        _ request: AnyEncodableRequest,
+        _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
+    ) {
+        queue.addOperation(operation(for: request, completion))
+    }
+    
+    func operation<AnyRequest: Request>(
+        for request: AnyRequest,
+        _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
+    ) -> Operation {
+        return RequestOperation(urlSession: urlSession, request: request, completion)
+    }
+    
+    func operation<AnyEncodableRequest: EncodableRequest>(
+        for request: AnyEncodableRequest,
+        _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
+    ) -> Operation {
+        return RequestOperation(urlSession: urlSession, request: request, completion)
+    }
+    
+}
+
+
+
+
