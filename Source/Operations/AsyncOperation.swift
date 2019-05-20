@@ -36,8 +36,8 @@ class AsyncOperation: Operation {
             state = .finished
             return
         }
+        state = .executing
         main()
-        if state != .finished { state = .executing }
     }
     
     override func cancel() {

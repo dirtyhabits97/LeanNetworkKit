@@ -13,15 +13,6 @@ public protocol NetworkRequestManager: AnyObject {
     var urlSession: URLSession! { get }
     var queue: OperationQueue { get }
     
-    func load<AnyRequest: Request>(
-        _ request: AnyRequest,
-        _ completion: (Result<AnyRequest.Response, Error>) -> Void
-    )
-    func load<AnyEncodableRequest: EncodableRequest>(
-        _ request: AnyEncodableRequest,
-        _ completion: (Result<AnyEncodableRequest.Response, Error>) -> Void
-    )
-    
 }
 
 public extension NetworkRequestManager {
