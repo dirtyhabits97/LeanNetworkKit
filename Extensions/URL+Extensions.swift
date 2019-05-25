@@ -13,36 +13,24 @@ extension URL {
     init<AnyRequest: Request>(
         request: AnyRequest
     ) throws {
-        let url = request.baseUrl.appendingPathComponent(request.path)
-        // check if query items
+        let urlString = request.baseUrl.absoluteString + request.path
+        guard let url = URL(string: urlString) else {
+            throw RequestError.malformedUrl(urlString)
+        }
         guard let queryItems = request.queryItems else {
             self = url
             return
         }
-        var urlComponents = URLComponents(
+        var components = URLComponents(
             url: url,
             resolvingAgainstBaseURL: false
         )!
-        urlComponents.queryItems = queryItems
-        guard let absoluteUrl = urlComponents.url else {
-            let string = url.absoluteString + queryItems.formatted
+        components.queryItems = queryItems
+        guard let absoluteUrl = components.url else {
+            let string = urlString + (components.percentEncodedQuery ?? "")
             throw RequestError.malformedUrl(string)
         }
         self = absoluteUrl
-    }
-    
-}
-
-private extension Array where Element == URLQueryItem {
-    
-    var formatted: String {
-        var strings: [String] = []
-        for element in self {
-            var string = element.name
-            element.value.map { string.append("=\($0)") }
-            strings.append(string)
-        }
-        return "?" + strings.joined(separator: "&")
     }
     
 }

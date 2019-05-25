@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RequestOperation<AnyRequest: Request>: AsyncOperation {
+class RequestOperation<AnyRequest: Request>: AsyncOperation {
     
     // MARK: - Properties
     
@@ -19,6 +19,9 @@ final class RequestOperation<AnyRequest: Request>: AsyncOperation {
     
     private var dataTask: URLSessionDataTask?
     
+    var toUrlRequest: (AnyRequest) throws -> URLRequest {
+        return { request in try URLRequest(request: request) }
+    }
     // MARK: - Lifecycle
     
     init(
@@ -35,7 +38,7 @@ final class RequestOperation<AnyRequest: Request>: AsyncOperation {
         // attempt to create the url request
         let urlRequest: URLRequest
         do {
-            urlRequest = try getUrlRequest()
+            urlRequest = try toUrlRequest(request)
         } catch let error {
             completion(.failure(error))
             state = .finished
@@ -43,11 +46,16 @@ final class RequestOperation<AnyRequest: Request>: AsyncOperation {
         }
         // create the data task
         dataTask = urlSession?.dataTask(for: urlRequest) { [weak self] (result) in
-            guard let self = self else { return } // avoid retain cycle
-            defer { self.state = .finished } // state should be finished after completing data task
-            guard !self.isCancelled else { return } // check if it wasn't cancelled
-            let newResult = result.map(self.request.decode) // result with response type
-            self.completion(newResult) // completion block execution
+            // avoid retain cycle
+            guard let self = self else { return }
+            // state should be finished after completing data task
+            defer { self.state = .finished }
+            // check if it wasn't cancelled
+            guard !self.isCancelled else { return }
+            // result with response type
+            let newResult = result.map(self.request.decode)
+            // completion block execution
+            self.completion(newResult)
         }
         dataTask?.resume()
     }
@@ -55,22 +63,6 @@ final class RequestOperation<AnyRequest: Request>: AsyncOperation {
     public override func cancel() {
         super.cancel()
         dataTask?.cancel()
-    }
-    
-}
-
-private extension RequestOperation {
-    
-    func getUrlRequest() throws -> URLRequest {
-        return try URLRequest(request: request)
-    }
-    
-}
-
-private extension RequestOperation where AnyRequest: EncodableRequest {
-    
-    func getUrlRequest() throws -> URLRequest {
-        return try URLRequest(encodableRequest: request)
     }
     
 }

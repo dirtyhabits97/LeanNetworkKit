@@ -42,7 +42,7 @@ public extension NetworkRequestManager {
         for request: AnyEncodableRequest,
         _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
     ) -> Operation {
-        return RequestOperation(urlSession: urlSession, request: request, completion)
+        return EncodableRequestOperation(urlSession: urlSession, request: request, completion)
     }
     
 }
