@@ -22,6 +22,7 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
     var toUrlRequest: (AnyRequest) throws -> URLRequest {
         return { request in try URLRequest(request: request) }
     }
+    
     // MARK: - Lifecycle
     
     init(
