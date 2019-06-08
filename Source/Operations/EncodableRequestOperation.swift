@@ -10,8 +10,8 @@ import Foundation
 
 class EncodableRequestOperation<AnyEncodableRequest: EncodableRequest>: RequestOperation<AnyEncodableRequest> {
     
-    override var toUrlRequest: (AnyEncodableRequest) throws -> URLRequest {
-        return { request in try URLRequest(encodableRequest: request) }
+    override func transform(request: AnyEncodableRequest) throws -> URLRequest {
+        return try URLRequest(encodableRequest: request)
     }
     
 }

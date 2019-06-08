@@ -19,10 +19,6 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
     
     private var dataTask: URLSessionDataTask?
     
-    var toUrlRequest: (AnyRequest) throws -> URLRequest {
-        return { request in try URLRequest(request: request) }
-    }
-    
     // MARK: - Lifecycle
     
     init(
@@ -35,11 +31,11 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
         self.completion = completion
     }
     
-    public override func main() {
+    override func main() {
         // attempt to create the url request
         let urlRequest: URLRequest
         do {
-            urlRequest = try toUrlRequest(request)
+            urlRequest = try transform(request: request)
         } catch let error {
             completion(.failure(error))
             state = .finished
@@ -61,9 +57,15 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
         dataTask?.resume()
     }
     
-    public override func cancel() {
+    override func cancel() {
         super.cancel()
         dataTask?.cancel()
+    }
+    
+    // MARK: - Transformation methods
+    
+    func transform(request: AnyRequest) throws -> URLRequest {
+        return try URLRequest(request: request)
     }
     
 }

@@ -112,9 +112,9 @@
 		EA2EE8062184EFF200ED4BD0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D647B01122907BE3009628BC /* URLSession+Extensions.swift */,
-				EA2EE8072184F00300ED4BD0 /* URLRequest+Extensions.swift */,
 				D647B01E2290852C009628BC /* URL+Extensions.swift */,
+				EA2EE8072184F00300ED4BD0 /* URLRequest+Extensions.swift */,
+				D647B01122907BE3009628BC /* URLSession+Extensions.swift */,
 				EA2EE8092184F04F00ED4BD0 /* Data+Extensions.swift */,
 			);
 			path = Extensions;

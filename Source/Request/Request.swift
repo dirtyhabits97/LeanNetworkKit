@@ -15,7 +15,7 @@ public protocol Request {
     var baseUrl: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
-    var headers: HTTPHeaders? { get }
+    var headers: HTTPHeaders { get }
     var queryItems: [URLQueryItem]? { get }
     
     var decode: (Data) throws -> Response { get }
@@ -25,7 +25,7 @@ public protocol Request {
 public extension Request {
     
     var method: HTTPMethod { return .GET }
-    var headers: HTTPHeaders? { return nil }
+    var headers: HTTPHeaders { return [:] }
     var queryItems: [URLQueryItem]? { return nil }
     
 }

@@ -16,11 +16,6 @@ extension URLSession {
         _ completion: @escaping (Result<Data, Error>) -> Void
     ) -> URLSessionDataTask {
         let dataTask = self.dataTask(with: urlRequest) { (data, response, error) in
-            // map errors
-            if let error = error as? URLError, error.code == .notConnectedToInternet {
-                completion(.failure(RequestError.noInternet))
-                return
-            }
             // generic error
             if let error = error {
                 completion(.failure(error))
@@ -36,13 +31,8 @@ extension URLSession {
                 completion(.failure(RequestError.statusCodeError(statusCode)))
                 return
             }
-            // check data
-            guard let data = data else {
-                completion(.failure(RequestError.nilData))
-                return
-            }
             // success
-            completion(.success(data))
+            completion(.success(data!))
         }
         return dataTask
     }

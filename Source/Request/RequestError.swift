@@ -12,31 +12,26 @@ public enum RequestError: LocalizedError {
     case malformedUrl(String)
     
     // URLRequest loading errors
-    case noInternet
     case notAnHTTPRequest
     case statusCodeError(Int)
-    case nilData
     
     // Encoding & Decoding errors
     case failedToEncode(String)
     case failedToDecode(String)
     
     public var errorDescription: String? {
+        let prefix = "Network Error - "
         switch self {
         case .malformedUrl(let urlString):
-            return "Malformd url: \(urlString)"
-        case .noInternet:
-            return "Device is not connected to Internet"
+            return prefix + "Malformd url: \(urlString)"
         case .notAnHTTPRequest:
-            return "Not a valid HTTP request"
+            return prefix + "Not a valid HTTP request"
         case .statusCodeError(let code):
-            return "Received status code: \(code)"
-        case .nilData:
-            return "Received nil data after all validations passed"
+            return prefix + "Received status code: \(code)"
         case .failedToEncode(let type):
-            return "Failed to encode \(type)"
+            return prefix + "Failed to encode \(type)"
         case .failedToDecode(let type):
-            return "Failed to encode \(type)"
+            return prefix + "Failed to encode \(type)"
         }
     }
     

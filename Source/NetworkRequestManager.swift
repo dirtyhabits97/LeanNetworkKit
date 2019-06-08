@@ -21,28 +21,42 @@ public extension NetworkRequestManager {
         _ request: AnyRequest,
         _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
     ) {
-        queue.addOperation(operation(for: request, completion))
+        queue.addOperation(operation(
+            request: request,
+            completion
+        ))
     }
     
     func load<AnyEncodableRequest: EncodableRequest>(
         _ request: AnyEncodableRequest,
         _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
     ) {
-        queue.addOperation(operation(for: request, completion))
+        queue.addOperation(operation(
+            request: request,
+            completion
+        ))
     }
     
     func operation<AnyRequest: Request>(
-        for request: AnyRequest,
+        request: AnyRequest,
         _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
     ) -> Operation {
-        return RequestOperation(urlSession: urlSession, request: request, completion)
+        return RequestOperation(
+            urlSession: urlSession,
+            request: request,
+            completion
+        )
     }
     
     func operation<AnyEncodableRequest: EncodableRequest>(
-        for request: AnyEncodableRequest,
+        request: AnyEncodableRequest,
         _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
     ) -> Operation {
-        return EncodableRequestOperation(urlSession: urlSession, request: request, completion)
+        return EncodableRequestOperation(
+            urlSession: urlSession,
+            request: request,
+            completion
+        )
     }
     
 }

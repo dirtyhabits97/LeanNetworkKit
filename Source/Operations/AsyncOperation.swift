@@ -32,7 +32,7 @@ class AsyncOperation: Operation {
     // MARK: - Lifecycle
     
     override func start() {
-        guard !isCancelled else {
+        guard !isCancelled && !isFinished else {
             state = .finished
             return
         }

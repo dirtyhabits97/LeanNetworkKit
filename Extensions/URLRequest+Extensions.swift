@@ -15,16 +15,14 @@ extension URLRequest {
     ) throws {
         self.init(url: try URL(request: request))
         httpMethod = request.method.rawValue
-        set(headers: request.headers ?? [:])
+        set(headers: request.headers)
     }
     
     init<AnyEncodableRequest: EncodableRequest>(
         encodableRequest request: AnyEncodableRequest
     ) throws {
-        self.init(url: try URL(request: request))
-        httpMethod = request.method.rawValue
+        try self.init(request: request)
         httpBody = try request.encode(request.body)
-        set(headers: request.headers ?? [:])
     }
     
     private mutating func set(headers: HTTPHeaders) {
