@@ -33,14 +33,7 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
     
     override func main() {
         // attempt to create the url request
-        let urlRequest: URLRequest
-        do {
-            urlRequest = try transform(request: request)
-        } catch let error {
-            completion(.failure(error))
-            state = .finished
-            return
-        }
+        guard let urlRequest = createUrlRequestOrFinish() else { return }
         // create the data task
         dataTask = urlSession?.dataTask(for: urlRequest) { [weak self] (result) in
             // avoid retain cycle
@@ -63,6 +56,16 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
     }
     
     // MARK: - Transformation methods
+    
+    private func createUrlRequestOrFinish() -> URLRequest? {
+        do {
+            return try transform(request: request)
+        } catch let error {
+            completion(.failure(error))
+            state = .finished
+            return nil
+        }
+    }
     
     func transform(request: AnyRequest) throws -> URLRequest {
         return try URLRequest(request: request)

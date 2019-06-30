@@ -32,7 +32,7 @@ extension URLSession {
                 return
             }
             // success
-            completion(.success(data!))
+            completion(.success(data ?? Data()))
         }
         return dataTask
     }
