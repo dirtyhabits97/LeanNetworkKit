@@ -17,7 +17,7 @@ public protocol EncodableRequest: Request {
 
 public extension EncodableRequest {
     
-    var method: HTTPMethod { return .POST }
+    var method: HTTPMethod { return .post }
     
 }
 

@@ -10,24 +10,20 @@ import Foundation
 
 extension URLRequest {
     
-    init<AnyRequest: Request>(
-        request: AnyRequest
-    ) throws {
-        self.init(url: try URL(request: request))
+    init(_ request: BaseRequest) {
+        self.init(url: URL(request))
         httpMethod = request.method.rawValue
-        set(headers: request.headers)
-    }
-    
-    init<AnyEncodableRequest: EncodableRequest>(
-        encodableRequest request: AnyEncodableRequest
-    ) throws {
-        try self.init(request: request)
-        httpBody = try request.encode(request.body)
-    }
-    
-    private mutating func set(headers: HTTPHeaders) {
-        for (header, value) in headers {
+        for (header, value) in (request.headers ?? [:]) {
             setValue(value, forHTTPHeaderField: header)
+        }
+    }
+    
+    init<R: EncodableRequest>(encodableRequest request: R) {
+        do {
+            self.init(request)
+            httpBody = try request.encode(request.body)
+        } catch let error {
+            fatalError("Networking - Failed to encode body: \(error.localizedDescription)")
         }
     }
     

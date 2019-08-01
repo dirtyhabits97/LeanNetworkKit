@@ -8,23 +8,23 @@
 
 import Foundation
 
-class RequestOperation<AnyRequest: Request>: AsyncOperation {
+class RequestOperation<Request: LeanNetworkKit.Request>: AsyncOperation {
     
     // MARK: - Properties
     
     private weak var urlSession: URLSession?
     
-    private let request: AnyRequest
-    private let completion: (Result<AnyRequest.Response, Error>) -> Void
+    private let request: Request
+    private let completion: (Result<Request.Response, Error>) -> Void
     
-    private var dataTask: URLSessionDataTask?
+    private var task: URLSessionDataTask?
     
     // MARK: - Lifecycle
     
     init(
         urlSession: URLSession,
-        request: AnyRequest,
-        _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
+        request: Request,
+        _ completion: @escaping (Result<Request.Response, Error>) -> Void
     ) {
         self.urlSession = urlSession
         self.request = request
@@ -32,10 +32,10 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
     }
     
     override func main() {
-        // attempt to create the url request
-        guard let urlRequest = createUrlRequestOrFinish() else { return }
+        // create url request from request protocol
+        let urlRequest = createUrlRequest(from: request)
         // create the data task
-        dataTask = urlSession?.dataTask(for: urlRequest) { [weak self] (result) in
+        task = urlSession?.dataTask(for: urlRequest) { [weak self] (result) in
             // avoid retain cycle
             guard let self = self else { return }
             // state should be finished after completing data task
@@ -47,41 +47,18 @@ class RequestOperation<AnyRequest: Request>: AsyncOperation {
             // completion block execution
             self.completion(newResult)
         }
-        dataTask?.resume()
+        task?.resume()
     }
     
     override func cancel() {
         super.cancel()
-        dataTask?.cancel()
+        task?.cancel()
     }
     
     // MARK: - Transformation methods
     
-    private func createUrlRequestOrFinish() -> URLRequest? {
-        do {
-            return try transform(request: request)
-        } catch let error {
-            completion(.failure(error))
-            state = .finished
-            return nil
-        }
-    }
-    
-    func transform(request: AnyRequest) throws -> URLRequest {
-        return try URLRequest(request: request)
-    }
-    
-}
-
-private extension Result where Failure == Error {
-    
-    func map<NewSuccess>(
-        _ transform: (Success) throws -> NewSuccess
-    ) -> Result<NewSuccess, Failure> {
-        switch self {
-        case .success(let value): return .init { try transform(value) }
-        case .failure(let error): return .failure(error)
-        }
+    func createUrlRequest(from request: Request) -> URLRequest {
+        return URLRequest(request)
     }
     
 }

@@ -8,9 +8,6 @@
 
 public enum RequestError: LocalizedError {
     
-    // URL creation error
-    case malformedUrl(String)
-    
     // URLRequest loading errors
     case notAnHTTPRequest
     case statusCodeError(Int)
@@ -22,8 +19,6 @@ public enum RequestError: LocalizedError {
     public var errorDescription: String? {
         let prefix = "Network Error - "
         switch self {
-        case .malformedUrl(let urlString):
-            return prefix + "Malformd url: \(urlString)"
         case .notAnHTTPRequest:
             return prefix + "Not a valid HTTP request"
         case .statusCodeError(let code):

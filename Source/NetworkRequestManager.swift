@@ -17,6 +17,12 @@ public protocol NetworkRequestManager: AnyObject {
 
 public extension NetworkRequestManager {
     
+    var urlSession: URLSession! { return .shared }
+
+}
+
+public extension NetworkRequestManager {
+    
     func load<AnyRequest: Request>(
         _ request: AnyRequest,
         _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
@@ -33,6 +39,18 @@ public extension NetworkRequestManager {
     ) {
         queue.addOperation(operation(
             request: request,
+            completion
+        ))
+    }
+    
+    func download(
+        _ request: DownloadRequest,
+        filename: String? = nil,
+        _ completion: @escaping (Result<URL, Error>) -> Void
+    ) {
+        queue.addOperation(operation(
+            request: request,
+            filename: filename,
             completion
         ))
     }
@@ -55,6 +73,19 @@ public extension NetworkRequestManager {
         return EncodableRequestOperation(
             urlSession: urlSession,
             request: request,
+            completion
+        )
+    }
+    
+    func operation(
+        request: DownloadRequest,
+        filename: String?,
+        _ completion: @escaping (Result<URL, Error>) -> Void
+    ) -> Operation {
+        return DownloadOperation(
+            urlSession: urlSession,
+            request: request,
+            filename: filename,
             completion
         )
     }

@@ -6,29 +6,25 @@
 //  Copyright © 2019 Gonzalo Reyes Huertas. All rights reserved.
 //
 
-public typealias HTTPHeaders = [String: String]
-
-public protocol Request {
+public protocol Request: BaseRequest {
     
     associatedtype Response
-    
-    var baseUrl: URL { get }
-    var path: String { get }
-    var method: HTTPMethod { get }
-    var headers: HTTPHeaders { get }
-    var queryItems: [URLQueryItem]? { get }
     
     var decode: (Data) throws -> Response { get }
     
 }
 
-public extension Request {
+// MARK: - Raw
+
+public extension Request where Response == Data {
     
-    var method: HTTPMethod { return .GET }
-    var headers: HTTPHeaders { return [:] }
-    var queryItems: [URLQueryItem]? { return nil }
+    var decode: (Data) throws -> Response {
+        return { data in data }
+    }
     
 }
+
+// MARK: - Decodable
 
 public extension Request where Response: Decodable {
     
@@ -38,8 +34,9 @@ public extension Request where Response: Decodable {
     
 }
 
+// MARK: - Ignore response
+
 public struct IgnoreResponse { }
-public struct EmptyResponse { }
 
 public extension Request where Response == IgnoreResponse {
     
@@ -48,6 +45,10 @@ public extension Request where Response == IgnoreResponse {
     }
     
 }
+
+// MARK: - Empty response
+
+public struct EmptyResponse { }
 
 public extension Request where Response == EmptyResponse {
     

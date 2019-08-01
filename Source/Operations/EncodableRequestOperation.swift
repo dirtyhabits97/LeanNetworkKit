@@ -8,10 +8,10 @@
 
 import Foundation
 
-class EncodableRequestOperation<AnyEncodableRequest: EncodableRequest>: RequestOperation<AnyEncodableRequest> {
+class EncodableRequestOperation<R: EncodableRequest>: RequestOperation<R> {
     
-    override func transform(request: AnyEncodableRequest) throws -> URLRequest {
-        return try URLRequest(encodableRequest: request)
+    override func createUrlRequest(from request: R) -> URLRequest {
+        return URLRequest(encodableRequest: request)
     }
     
 }

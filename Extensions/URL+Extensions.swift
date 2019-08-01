@@ -10,32 +10,22 @@ import Foundation
 
 extension URL {
     
-    init<AnyRequest: Request>(
-        request: AnyRequest
-    ) throws {
-        // append the path
-        let urlString = request.baseUrl.absoluteString + request.path
+    init(_ request: BaseRequest) {
+        // create the raw url
+        let raw = request.baseUrl.absoluteString + request.path
         // check if url is valid
-        guard let url = URL(string: urlString) else {
-            throw RequestError.malformedUrl(urlString)
+        guard var components = URLComponents(string: raw) else {
+            fatalError("Networking - Malformed url: \(raw)")
         }
         // check for query params
-        guard let queryItems = request.queryItems else {
-            self = url
-            return
+        if let queryItems = request.queryItems {
+            components.queryItems = queryItems
         }
-        var components = URLComponents(
-            url: url,
-            resolvingAgainstBaseURL: false
-        )!
-        // append query items
-        components.queryItems = queryItems + (components.queryItems ?? [])
-        // get the formatted url
-        guard let formattedUrl = components.url else {
-            let string = urlString + (components.percentEncodedQuery ?? "")
-            throw RequestError.malformedUrl(string)
+        // get formatted url
+        guard let url = components.url else {
+            fatalError("Networking - Malformed url: \(components.string ?? raw)")
         }
-        self = formattedUrl
+        self = url
     }
     
 }
