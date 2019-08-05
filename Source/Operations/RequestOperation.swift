@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RequestOperation<Request: LeanNetworkKit.Request>: AsyncOperation {
+class RequestOperation<Request: LeanNetworkKit.Request>: AsyncOperation, ProgressOperation {
     
     // MARK: - Properties
     
@@ -16,8 +16,10 @@ class RequestOperation<Request: LeanNetworkKit.Request>: AsyncOperation {
     
     private let request: Request
     private let completion: (Result<Request.Response, Error>) -> Void
+    var onProgress: ((Double) -> Void)?
     
     private var task: URLSessionDataTask?
+    private var token: NSKeyValueObservation?
     
     // MARK: - Lifecycle
     
@@ -47,15 +49,19 @@ class RequestOperation<Request: LeanNetworkKit.Request>: AsyncOperation {
             // completion block execution
             self.completion(newResult)
         }
+        // add progress observation
+        token = task?.addProgressObservation(onProgress)
+        // start the data task
         task?.resume()
     }
     
     override func cancel() {
         super.cancel()
-        task?.cancel()
+        task?.cancel() // stop task
+        token = nil // stop observing
     }
     
-    // MARK: - Transformation methods
+    // MARK: - Helper methods
     
     func createUrlRequest(from request: Request) -> URLRequest {
         return URLRequest(request)

@@ -58,7 +58,7 @@ public extension NetworkRequestManager {
     func operation<AnyRequest: Request>(
         request: AnyRequest,
         _ completion: @escaping (Result<AnyRequest.Response, Error>) -> Void
-    ) -> Operation {
+    ) -> ProgressOperation {
         return RequestOperation(
             urlSession: urlSession,
             request: request,
@@ -69,7 +69,7 @@ public extension NetworkRequestManager {
     func operation<AnyEncodableRequest: EncodableRequest>(
         request: AnyEncodableRequest,
         _ completion: @escaping (Result<AnyEncodableRequest.Response, Error>) -> Void
-    ) -> Operation {
+    ) -> ProgressOperation {
         return EncodableRequestOperation(
             urlSession: urlSession,
             request: request,
@@ -81,7 +81,7 @@ public extension NetworkRequestManager {
         request: DownloadRequest,
         filename: String?,
         _ completion: @escaping (Result<URL, Error>) -> Void
-    ) -> Operation {
+    ) -> ProgressOperation {
         return DownloadOperation(
             urlSession: urlSession,
             request: request,

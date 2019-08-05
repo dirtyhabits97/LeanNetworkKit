@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DownloadOperation: AsyncOperation {
+class DownloadOperation: AsyncOperation, ProgressOperation {
     
     // MARK: - Properties
     
@@ -17,8 +17,10 @@ class DownloadOperation: AsyncOperation {
     private let request: DownloadRequest
     private let filename: String?
     private let completion: (Result<URL, Error>) -> Void
+    var onProgress: ((Double) -> Void)?
     
     private var task: URLSessionDownloadTask?
+    private var token: NSKeyValueObservation?
     
     // MARK: - Lifecycle
     
@@ -50,12 +52,16 @@ class DownloadOperation: AsyncOperation {
             // completion block execution
             self.completion(newResult)
         }
+        // add progress observation
+        token = task?.addProgressObservation(onProgress)
+        // start the download task
         task?.resume()
     }
     
     override func cancel() {
         super.cancel()
-        task?.cancel()
+        task?.cancel() // stop task
+        token = nil // stop observing
     }
     
     // MARK: - Helper methods
