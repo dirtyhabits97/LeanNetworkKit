@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8487A18E251FDEED00E36DFD /* RequestComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18D251FDEED00E36DFD /* RequestComponents.swift */; };
+		8487A190251FDF3200E36DFD /* RequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18F251FDF3200E36DFD /* RequestOptions.swift */; };
+		8487A193251FDF6600E36DFD /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */; };
+		8487A196251FDFD800E36DFD /* NKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A195251FDFD800E36DFD /* NKError.swift */; };
 		D647B01222907BE3009628BC /* URLSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01122907BE3009628BC /* URLSession+Extensions.swift */; };
-		D647B01422907C83009628BC /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01322907C83009628BC /* RequestError.swift */; };
 		D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01522907F1C009628BC /* HTTPMethod.swift */; };
-		D647B01822907F49009628BC /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01722907F49009628BC /* Request.swift */; };
-		D647B01A229082A2009628BC /* EncodableRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B019229082A2009628BC /* EncodableRequest.swift */; };
 		D647B01D2290837B009628BC /* NetworkRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01C2290837B009628BC /* NetworkRequestManager.swift */; };
 		D647B01F2290852C009628BC /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01E2290852C009628BC /* URL+Extensions.swift */; };
 		D6B319E42290CC8B00294CA0 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */; };
 		D6B319E62290D80B00294CA0 /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B319E52290D80B00294CA0 /* RequestOperation.swift */; };
-		D6B9ABBE22F276BA00504406 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B9ABBD22F276BA00504406 /* BaseRequest.swift */; };
 		D6B9ABC022F27D2F00504406 /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B9ABBF22F27D2F00504406 /* DownloadOperation.swift */; };
-		D6B9ABC222F27DAC00504406 /* DownloadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B9ABC122F27DAC00504406 /* DownloadRequest.swift */; };
 		D6B9ABC422F281D900504406 /* Result+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B9ABC322F281D900504406 /* Result+Extensions.swift */; };
 		D6BD182C22F8C4BE0042F0D1 /* ProgressOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD182B22F8C4BE0042F0D1 /* ProgressOperation.swift */; };
 		D6BD182E22F8C9C80042F0D1 /* URLSessionTask+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BD182D22F8C9C80042F0D1 /* URLSessionTask+Extensions.swift */; };
@@ -29,18 +28,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8487A18D251FDEED00E36DFD /* RequestComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestComponents.swift; sourceTree = "<group>"; };
+		8487A18F251FDF3200E36DFD /* RequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOptions.swift; sourceTree = "<group>"; };
+		8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
+		8487A195251FDFD800E36DFD /* NKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKError.swift; sourceTree = "<group>"; };
 		D647B01122907BE3009628BC /* URLSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extensions.swift"; sourceTree = "<group>"; };
-		D647B01322907C83009628BC /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		D647B01522907F1C009628BC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		D647B01722907F49009628BC /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		D647B019229082A2009628BC /* EncodableRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableRequest.swift; sourceTree = "<group>"; };
 		D647B01C2290837B009628BC /* NetworkRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestManager.swift; sourceTree = "<group>"; };
 		D647B01E2290852C009628BC /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		D6B319E52290D80B00294CA0 /* RequestOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
-		D6B9ABBD22F276BA00504406 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		D6B9ABBF22F27D2F00504406 /* DownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOperation.swift; sourceTree = "<group>"; };
-		D6B9ABC122F27DAC00504406 /* DownloadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadRequest.swift; sourceTree = "<group>"; };
 		D6B9ABC322F281D900504406 /* Result+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Extensions.swift"; sourceTree = "<group>"; };
 		D6BD182B22F8C4BE0042F0D1 /* ProgressOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressOperation.swift; sourceTree = "<group>"; };
 		D6BD182D22F8C9C80042F0D1 /* URLSessionTask+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionTask+Extensions.swift"; sourceTree = "<group>"; };
@@ -63,14 +61,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8487A18C251FDEB100E36DFD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA2EE7F32184EF0F00ED4BD0 /* LeanNetworkKit.h */,
+				EA2EE7F42184EF0F00ED4BD0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8487A191251FDF4A00E36DFD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		D647B01B2290831F009628BC /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				D6B9ABBD22F276BA00504406 /* BaseRequest.swift */,
-				D647B01722907F49009628BC /* Request.swift */,
-				D647B019229082A2009628BC /* EncodableRequest.swift */,
-				D6B9ABC122F27DAC00504406 /* DownloadRequest.swift */,
-				D647B01322907C83009628BC /* RequestError.swift */,
+				8487A18D251FDEED00E36DFD /* RequestComponents.swift */,
+				8487A18F251FDF3200E36DFD /* RequestOptions.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -91,8 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2EE8062184EFF200ED4BD0 /* Extensions */,
-				EA2EE7FB2184EF1600ED4BD0 /* Source */,
-				EA2EE7F22184EF0F00ED4BD0 /* LeanNetworkKit */,
+				EA2EE7FB2184EF1600ED4BD0 /* Sources */,
 				EA2EE7F12184EF0F00ED4BD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,24 +116,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA2EE7F22184EF0F00ED4BD0 /* LeanNetworkKit */ = {
+		EA2EE7FB2184EF1600ED4BD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				EA2EE7F32184EF0F00ED4BD0 /* LeanNetworkKit.h */,
-				EA2EE7F42184EF0F00ED4BD0 /* Info.plist */,
-			);
-			path = LeanNetworkKit;
-			sourceTree = "<group>";
-		};
-		EA2EE7FB2184EF1600ED4BD0 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				D647B0222290CC59009628BC /* Operations */,
+				8487A191251FDF4A00E36DFD /* Helpers */,
 				D647B01B2290831F009628BC /* Request */,
-				D647B01522907F1C009628BC /* HTTPMethod.swift */,
+				8487A18C251FDEB100E36DFD /* Supporting Files */,
+				D647B0222290CC59009628BC /* Operations */,
 				D647B01C2290837B009628BC /* NetworkRequestManager.swift */,
+				8487A195251FDFD800E36DFD /* NKError.swift */,
+				D647B01522907F1C009628BC /* HTTPMethod.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		EA2EE8062184EFF200ED4BD0 /* Extensions */ = {
@@ -218,23 +223,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D647B01422907C83009628BC /* RequestError.swift in Sources */,
+				8487A18E251FDEED00E36DFD /* RequestComponents.swift in Sources */,
 				D6D7BCB92298FEEA00514F69 /* EncodableRequestOperation.swift in Sources */,
 				D647B01F2290852C009628BC /* URL+Extensions.swift in Sources */,
 				D6BD182E22F8C9C80042F0D1 /* URLSessionTask+Extensions.swift in Sources */,
-				D647B01A229082A2009628BC /* EncodableRequest.swift in Sources */,
 				D647B01D2290837B009628BC /* NetworkRequestManager.swift in Sources */,
+				8487A193251FDF6600E36DFD /* URLRequestBuilder.swift in Sources */,
+				8487A190251FDF3200E36DFD /* RequestOptions.swift in Sources */,
 				D647B01222907BE3009628BC /* URLSession+Extensions.swift in Sources */,
 				D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */,
 				EA2EE80A2184F04F00ED4BD0 /* Data+Extensions.swift in Sources */,
 				D6BD182C22F8C4BE0042F0D1 /* ProgressOperation.swift in Sources */,
+				8487A196251FDFD800E36DFD /* NKError.swift in Sources */,
 				EA2EE8082184F00300ED4BD0 /* URLRequest+Extensions.swift in Sources */,
 				D6B9ABC022F27D2F00504406 /* DownloadOperation.swift in Sources */,
 				D6B319E42290CC8B00294CA0 /* AsyncOperation.swift in Sources */,
-				D647B01822907F49009628BC /* Request.swift in Sources */,
 				D6B9ABC422F281D900504406 /* Result+Extensions.swift in Sources */,
-				D6B9ABBE22F276BA00504406 /* BaseRequest.swift in Sources */,
-				D6B9ABC222F27DAC00504406 /* DownloadRequest.swift in Sources */,
 				D6B319E62290D80B00294CA0 /* RequestOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +379,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = LeanNetworkKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,7 +407,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = LeanNetworkKit/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
