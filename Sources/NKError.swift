@@ -188,3 +188,5 @@ extension NKError.RequestError {
     }
 
 }
+
+public typealias StatusCode = Int
