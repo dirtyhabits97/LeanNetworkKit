@@ -93,6 +93,7 @@
 		8487A201251FF61D00E36DFD /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		8487A203251FF75400E36DFD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8487A205251FF7D900E36DFD /* CommentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStore.swift; sourceTree = "<group>"; };
+		8487A207251FFB9600E36DFD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D647B01522907F1C009628BC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D647B01C2290837B009628BC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 		EA2EE7E62184EF0F00ED4BD0 = {
 			isa = PBXGroup;
 			children = (
+				8487A207251FFB9600E36DFD /* README.md */,
 				EA2EE7FB2184EF1600ED4BD0 /* Sources */,
 				8487A1E2251FECA600E36DFD /* Demo */,
 				EA2EE7F12184EF0F00ED4BD0 /* Products */,
