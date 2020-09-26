@@ -22,7 +22,7 @@ public class HTTPClient {
     /// Modifies the requests.
     var requestModifier: RequestModifier?
     
-    init(urlSession: URLSession) {
+    public init(urlSession: URLSession) {
         self.queue = OperationQueue()
         self.urlSession = urlSession
     }

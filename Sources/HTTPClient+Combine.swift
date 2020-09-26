@@ -2,7 +2,7 @@
 //  HTTPClient+Combine.swift
 //  LeanNetworkKit
 //
-//  Created by DIGITAL008 on 9/26/20.
+//  Created by Gonzalo Reyes Huertas on 9/26/20.
 //  Copyright © 2020 Gonzalo Reyes Huertas. All rights reserved.
 //
 

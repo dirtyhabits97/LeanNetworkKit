@@ -29,12 +29,33 @@
 		8487A1BE251FEA1000E36DFD /* HTTPClient+RequestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1BD251FEA1000E36DFD /* HTTPClient+RequestObserver.swift */; };
 		8487A1C1251FEA8F00E36DFD /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1C0251FEA8F00E36DFD /* Future.swift */; };
 		8487A1DC251FEC5100E36DFD /* HTTPClient+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1DB251FEC5100E36DFD /* HTTPClient+Combine.swift */; };
+		8487A1E4251FECA600E36DFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1E3251FECA600E36DFD /* AppDelegate.swift */; };
+		8487A1E6251FECA600E36DFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1E5251FECA600E36DFD /* SceneDelegate.swift */; };
+		8487A1E8251FECA600E36DFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1E7251FECA600E36DFD /* ContentView.swift */; };
+		8487A1EA251FECA700E36DFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8487A1E9251FECA700E36DFD /* Assets.xcassets */; };
+		8487A1ED251FECA700E36DFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8487A1EC251FECA700E36DFD /* Preview Assets.xcassets */; };
+		8487A1F0251FECA700E36DFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8487A1EE251FECA700E36DFD /* LaunchScreen.storyboard */; };
+		8487A1F7251FED1D00E36DFD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1F6251FED1D00E36DFD /* Post.swift */; };
+		8487A1F9251FEDBC00E36DFD /* PostStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A1F8251FEDBC00E36DFD /* PostStore.swift */; };
+		8487A202251FF61D00E36DFD /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A201251FF61D00E36DFD /* PostDetailView.swift */; };
+		8487A204251FF75400E36DFD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A203251FF75400E36DFD /* Comment.swift */; };
+		8487A206251FF7D900E36DFD /* CommentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A205251FF7D900E36DFD /* CommentStore.swift */; };
 		D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01522907F1C009628BC /* HTTPMethod.swift */; };
 		D647B01D2290837B009628BC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01C2290837B009628BC /* HTTPClient.swift */; };
 		D6B319E42290CC8B00294CA0 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */; };
 		D6B319E62290D80B00294CA0 /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B319E52290D80B00294CA0 /* RequestOperation.swift */; };
 		EA2EE7F52184EF0F00ED4BD0 /* LeanNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2EE7F32184EF0F00ED4BD0 /* LeanNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8487A1FA251FEEA900E36DFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA2EE7E72184EF0F00ED4BD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA2EE7EF2184EF0F00ED4BD0;
+			remoteInfo = LeanNetworkKit;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8487A18D251FDEED00E36DFD /* RequestComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestComponents.swift; sourceTree = "<group>"; };
@@ -59,6 +80,19 @@
 		8487A1BD251FEA1000E36DFD /* HTTPClient+RequestObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPClient+RequestObserver.swift"; sourceTree = "<group>"; };
 		8487A1C0251FEA8F00E36DFD /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		8487A1DB251FEC5100E36DFD /* HTTPClient+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPClient+Combine.swift"; sourceTree = "<group>"; };
+		8487A1E1251FECA600E36DFD /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8487A1E3251FECA600E36DFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8487A1E5251FECA600E36DFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8487A1E7251FECA600E36DFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8487A1E9251FECA700E36DFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8487A1EC251FECA700E36DFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8487A1EF251FECA700E36DFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8487A1F1251FECA700E36DFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8487A1F6251FED1D00E36DFD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8487A1F8251FEDBC00E36DFD /* PostStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStore.swift; sourceTree = "<group>"; };
+		8487A201251FF61D00E36DFD /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		8487A203251FF75400E36DFD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		8487A205251FF7D900E36DFD /* CommentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStore.swift; sourceTree = "<group>"; };
 		D647B01522907F1C009628BC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D647B01C2290837B009628BC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -69,6 +103,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8487A1DE251FECA600E36DFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA2EE7ED2184EF0F00ED4BD0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +192,41 @@
 			path = RequestObserver;
 			sourceTree = "<group>";
 		};
+		8487A1E2251FECA600E36DFD /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				8487A1F5251FED1800E36DFD /* Models */,
+				8487A1E3251FECA600E36DFD /* AppDelegate.swift */,
+				8487A1E5251FECA600E36DFD /* SceneDelegate.swift */,
+				8487A1E7251FECA600E36DFD /* ContentView.swift */,
+				8487A201251FF61D00E36DFD /* PostDetailView.swift */,
+				8487A1E9251FECA700E36DFD /* Assets.xcassets */,
+				8487A1EE251FECA700E36DFD /* LaunchScreen.storyboard */,
+				8487A1F1251FECA700E36DFD /* Info.plist */,
+				8487A1EB251FECA700E36DFD /* Preview Content */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		8487A1EB251FECA700E36DFD /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8487A1EC251FECA700E36DFD /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8487A1F5251FED1800E36DFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8487A1F6251FED1D00E36DFD /* Post.swift */,
+				8487A1F8251FEDBC00E36DFD /* PostStore.swift */,
+				8487A203251FF75400E36DFD /* Comment.swift */,
+				8487A205251FF7D900E36DFD /* CommentStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D647B01B2290831F009628BC /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2EE7FB2184EF1600ED4BD0 /* Sources */,
+				8487A1E2251FECA600E36DFD /* Demo */,
 				EA2EE7F12184EF0F00ED4BD0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2EE7F02184EF0F00ED4BD0 /* LeanNetworkKit.framework */,
+				8487A1E1251FECA600E36DFD /* Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +294,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8487A1E0251FECA600E36DFD /* Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8487A1F2251FECA800E36DFD /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildPhases = (
+				8487A1DD251FECA600E36DFD /* Sources */,
+				8487A1DE251FECA600E36DFD /* Frameworks */,
+				8487A1DF251FECA600E36DFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8487A1FB251FEEA900E36DFD /* PBXTargetDependency */,
+			);
+			name = Demo;
+			productName = Demo;
+			productReference = 8487A1E1251FECA600E36DFD /* Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 		EA2EE7EF2184EF0F00ED4BD0 /* LeanNetworkKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA2EE7F82184EF0F00ED4BD0 /* Build configuration list for PBXNativeTarget "LeanNetworkKit" */;
@@ -244,6 +340,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Gonzalo Reyes Huertas";
 				TargetAttributes = {
+					8487A1E0251FECA600E36DFD = {
+						CreatedOnToolsVersion = 11.1;
+					};
 					EA2EE7EF2184EF0F00ED4BD0 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1020;
@@ -264,11 +363,22 @@
 			projectRoot = "";
 			targets = (
 				EA2EE7EF2184EF0F00ED4BD0 /* LeanNetworkKit */,
+				8487A1E0251FECA600E36DFD /* Demo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8487A1DF251FECA600E36DFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8487A1F0251FECA700E36DFD /* LaunchScreen.storyboard in Resources */,
+				8487A1ED251FECA700E36DFD /* Preview Assets.xcassets in Resources */,
+				8487A1EA251FECA700E36DFD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA2EE7EE2184EF0F00ED4BD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,6 +389,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8487A1DD251FECA600E36DFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8487A1E4251FECA600E36DFD /* AppDelegate.swift in Sources */,
+				8487A1E6251FECA600E36DFD /* SceneDelegate.swift in Sources */,
+				8487A1E8251FECA600E36DFD /* ContentView.swift in Sources */,
+				8487A204251FF75400E36DFD /* Comment.swift in Sources */,
+				8487A202251FF61D00E36DFD /* PostDetailView.swift in Sources */,
+				8487A206251FF7D900E36DFD /* CommentStore.swift in Sources */,
+				8487A1F9251FEDBC00E36DFD /* PostStore.swift in Sources */,
+				8487A1F7251FED1D00E36DFD /* Post.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EA2EE7EC2184EF0F00ED4BD0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,7 +439,68 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8487A1FB251FEEA900E36DFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA2EE7EF2184EF0F00ED4BD0 /* LeanNetworkKit */;
+			targetProxy = 8487A1FA251FEEA900E36DFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8487A1EE251FECA700E36DFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8487A1EF251FECA700E36DFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		8487A1F3251FECA800E36DFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Demo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4D3BQQ6A8Z;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.platform.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8487A1F4251FECA800E36DFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Demo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4D3BQQ6A8Z;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.platform.Demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EA2EE7F62184EF0F00ED4BD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -495,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8487A1F2251FECA800E36DFD /* Build configuration list for PBXNativeTarget "Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8487A1F3251FECA800E36DFD /* Debug */,
+				8487A1F4251FECA800E36DFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EA2EE7EA2184EF0F00ED4BD0 /* Build configuration list for PBXProject "LeanNetworkKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
