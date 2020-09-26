@@ -28,3 +28,41 @@ public class HTTPClient {
     }
     
 }
+
+public extension HTTPClient {
+    
+    // TODO: document this
+    private func operation<Response>(
+        for request: DecodableRequest<Response>,
+        _ completion: @escaping (Result<Response, NKError.RequestError>) -> Void
+    ) -> Operation {
+        let operation = RequestOperation(
+            urlSession: urlSession,
+            request: request,
+            completion
+        )
+        operation.baseURL = baseUrl
+        operation.modifier = requestModifier
+        operation.observer = requestObserver
+        return operation
+    }
+    
+    // TODO: document this
+    func send<Response>(
+        _ request: DecodableRequest<Response>,
+        _ completion: @escaping (Result<Response, NKError.RequestError>) -> Void
+    ) {
+        queue.addOperation(self.operation(
+            for: request,
+            completion
+        ))
+    }
+    
+    // TODO: document this
+    func send<Response>(_ request: DecodableRequest<Response>) -> Future<Response, NKError.RequestError> {
+        Future { completion in
+            send(request, completion)
+        }
+    }
+    
+}
