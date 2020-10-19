@@ -40,6 +40,8 @@
 		8487A202251FF61D00E36DFD /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A201251FF61D00E36DFD /* PostDetailView.swift */; };
 		8487A204251FF75400E36DFD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A203251FF75400E36DFD /* Comment.swift */; };
 		8487A206251FF7D900E36DFD /* CommentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A205251FF7D900E36DFD /* CommentStore.swift */; };
+		849DC2EC253E181100907BE1 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC2EB253E181100907BE1 /* WebSocket.swift */; };
+		849DC2F5253E1AE900907BE1 /* WebSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DC2F4253E1AE800907BE1 /* WebSocketClient.swift */; };
 		D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01522907F1C009628BC /* HTTPMethod.swift */; };
 		D647B01D2290837B009628BC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D647B01C2290837B009628BC /* HTTPClient.swift */; };
 		D6B319E42290CC8B00294CA0 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */; };
@@ -94,6 +96,8 @@
 		8487A203251FF75400E36DFD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		8487A205251FF7D900E36DFD /* CommentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentStore.swift; sourceTree = "<group>"; };
 		8487A207251FFB9600E36DFD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		849DC2EB253E181100907BE1 /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		849DC2F4253E1AE800907BE1 /* WebSocketClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketClient.swift; sourceTree = "<group>"; };
 		D647B01522907F1C009628BC /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D647B01C2290837B009628BC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		D6B319E32290CC8B00294CA0 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -228,6 +232,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		849DC2EA253E180700907BE1 /* WebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				849DC2EB253E181100907BE1 /* WebSocket.swift */,
+				849DC2F4253E1AE800907BE1 /* WebSocketClient.swift */,
+			);
+			path = WebSocket;
+			sourceTree = "<group>";
+		};
 		D647B01B2290831F009628BC /* Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +281,7 @@
 		EA2EE7FB2184EF1600ED4BD0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				849DC2EA253E180700907BE1 /* WebSocket */,
 				8487A18C251FDEB100E36DFD /* Supporting Files */,
 				8487A19E251FE3C500E36DFD /* Tools */,
 				8487A191251FDF4A00E36DFD /* Helpers */,
@@ -339,7 +353,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Gonzalo Reyes Huertas";
 				TargetAttributes = {
 					8487A1E0251FECA600E36DFD = {
@@ -412,6 +426,7 @@
 			files = (
 				8487A18E251FDEED00E36DFD /* RequestComponents.swift in Sources */,
 				8487A1AE251FE8D300E36DFD /* IgnoreResponse.swift in Sources */,
+				849DC2F5253E1AE900907BE1 /* WebSocketClient.swift in Sources */,
 				8487A19D251FE1A900E36DFD /* DecodableRequest.swift in Sources */,
 				8487A199251FE0D500E36DFD /* RequestBuilder.swift in Sources */,
 				8487A1BE251FEA1000E36DFD /* HTTPClient+RequestObserver.swift in Sources */,
@@ -426,6 +441,7 @@
 				8487A1B3251FE93100E36DFD /* HTTPClient+RequestModifier.swift in Sources */,
 				8487A193251FDF6600E36DFD /* URLRequestBuilder.swift in Sources */,
 				8487A190251FDF3200E36DFD /* RequestOptions.swift in Sources */,
+				849DC2EC253E181100907BE1 /* WebSocket.swift in Sources */,
 				8487A1BC251FE9D200E36DFD /* ClosureRequestObserver.swift in Sources */,
 				D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */,
 				8487A19B251FE19200E36DFD /* Request.swift in Sources */,
@@ -529,6 +545,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -555,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -593,6 +610,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -613,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
