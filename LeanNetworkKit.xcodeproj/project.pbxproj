@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840C6D25255720FC006FF2AC /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6D24255720FC006FF2AC /* WSClient.swift */; };
 		8487A18E251FDEED00E36DFD /* RequestComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18D251FDEED00E36DFD /* RequestComponents.swift */; };
 		8487A190251FDF3200E36DFD /* RequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18F251FDF3200E36DFD /* RequestOptions.swift */; };
 		8487A193251FDF6600E36DFD /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840C6D24255720FC006FF2AC /* WSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
 		8487A18D251FDEED00E36DFD /* RequestComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestComponents.swift; sourceTree = "<group>"; };
 		8487A18F251FDF3200E36DFD /* RequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOptions.swift; sourceTree = "<group>"; };
 		8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				8487A197251FE0C400E36DFD /* RequestBuilders */,
 				D647B0222290CC59009628BC /* Operations */,
 				D647B01C2290837B009628BC /* HTTPClient.swift */,
+				840C6D24255720FC006FF2AC /* WSClient.swift */,
 				D647B01522907F1C009628BC /* HTTPMethod.swift */,
 				8487A1DB251FEC5100E36DFD /* HTTPClient+Combine.swift */,
 				8487A195251FDFD800E36DFD /* NKError.swift */,
@@ -421,6 +424,7 @@
 				8487A1A1251FE3DF00E36DFD /* RequestModifier.swift in Sources */,
 				8487A1A9251FE81E00E36DFD /* Bundle+Extensions.swift in Sources */,
 				8487A1B5251FE94300E36DFD /* ClosureRequestModifier.swift in Sources */,
+				840C6D25255720FC006FF2AC /* WSClient.swift in Sources */,
 				8487A1B0251FE8E400E36DFD /* NotEmptyResponse.swift in Sources */,
 				8487A1DC251FEC5100E36DFD /* HTTPClient+Combine.swift in Sources */,
 				8487A1B3251FE93100E36DFD /* HTTPClient+RequestModifier.swift in Sources */,
