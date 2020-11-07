@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840C6D25255720FC006FF2AC /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6D24255720FC006FF2AC /* WSClient.swift */; };
+		840C6D2725572A78006FF2AC /* URLRequestBuilder+WS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C6D2625572A78006FF2AC /* URLRequestBuilder+WS.swift */; };
 		8487A18E251FDEED00E36DFD /* RequestComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18D251FDEED00E36DFD /* RequestComponents.swift */; };
 		8487A190251FDF3200E36DFD /* RequestOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A18F251FDF3200E36DFD /* RequestOptions.swift */; };
 		8487A193251FDF6600E36DFD /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		840C6D24255720FC006FF2AC /* WSClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
+		840C6D2625572A78006FF2AC /* URLRequestBuilder+WS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequestBuilder+WS.swift"; sourceTree = "<group>"; };
 		8487A18D251FDEED00E36DFD /* RequestComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestComponents.swift; sourceTree = "<group>"; };
 		8487A18F251FDF3200E36DFD /* RequestOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOptions.swift; sourceTree = "<group>"; };
 		8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				8487A1A8251FE81E00E36DFD /* Bundle+Extensions.swift */,
 				8487A1A6251FE80000E36DFD /* URLSession+Extensions.swift */,
 				8487A192251FDF6600E36DFD /* URLRequestBuilder.swift */,
+				840C6D2625572A78006FF2AC /* URLRequestBuilder+WS.swift */,
 				8487A1C0251FEA8F00E36DFD /* Future.swift */,
 			);
 			path = Helpers;
@@ -434,6 +437,7 @@
 				D647B01622907F1C009628BC /* HTTPMethod.swift in Sources */,
 				8487A19B251FE19200E36DFD /* Request.swift in Sources */,
 				8487A1C1251FEA8F00E36DFD /* Future.swift in Sources */,
+				840C6D2725572A78006FF2AC /* URLRequestBuilder+WS.swift in Sources */,
 				8487A196251FDFD800E36DFD /* NKError.swift in Sources */,
 				8487A1AC251FE89900E36DFD /* EmptyResponse.swift in Sources */,
 				8487A1B7251FE95400E36DFD /* CombinedRequestModifier.swift in Sources */,

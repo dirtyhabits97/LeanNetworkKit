@@ -14,7 +14,7 @@ import Foundation
 enum URLRequestBuilder {
 
     /// The set of characters that do not need to be encoded in the path.
-    private static let pathAllowedChars = CharacterSet.urlPathAllowed.union(.urlQueryAllowed)
+    static let pathAllowedChars = CharacterSet.urlPathAllowed.union(.urlQueryAllowed)
 
     /**
     Creates an `URL` based on a `RequestComponents`.
